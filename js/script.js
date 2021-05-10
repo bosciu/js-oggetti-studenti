@@ -78,10 +78,38 @@ console.log(studenti);
 
 button.addEventListener("click", function() {
     var studente = {
-        nome: prompt("Inserisci il tuo nome!"),
-        cognome: prompt("Inserisci il tuo cognome"),
-        eta: parseInt(prompt("Inserisci la tua età"))
-    }
+        nome: "",
+        cognome: "",
+        eta: 0
+    };
+    var primaVolta = true;
+    do {
+        if (!primaVolta) {
+            studente.nome = prompt("Errore! Inserisci il tuo nome!");
+        } else {
+            studente.nome = prompt("Inserisci il tuo nome!");
+        }
+        primaVolta = false;
+    } while (!isNaN(studente.nome) || studente.nome.length < 3);
+    var primaVolta = true;
+    do {
+        if (!primaVolta) {
+            studente.cognome = prompt("Errore! Inserisci il tuo cognome!");
+        } else {
+            studente.cognome = prompt("Inserisci il tuo cognome!");
+        }
+        primaVolta = false;
+    } while (!isNaN(studente.cognome) || studente.cognome.length < 2);
+    var primaVolta = true;
+    do {
+        if (!primaVolta) {
+            studente.eta = parseInt(prompt("Errore! Inserisci la tua età!"));
+        } else {
+            studente.eta = parseInt(prompt("Inserisci la tua età!"));
+        }
+        primaVolta = false;
+    } while (isNaN(studente.eta) || studente.eta > 70 || studente.eta < 14);
+    console.log(studente);
     studenti.push(studente);
     console.log(studenti);
 });
